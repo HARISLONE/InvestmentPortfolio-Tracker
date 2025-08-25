@@ -1,0 +1,262 @@
+/* .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10%;
+  color: #ddd;
+  border-bottom: 2px solid #3c3c3c;
+}
+.navbar .logo {
+  width: max(12vw, 120px);
+}
+.navbar ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+.navbar li {
+  cursor: pointer;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: max(1vw, 12px);
+}
+.navbar select {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+}
+.navbar option {
+  background-color: #09005c;
+  color: white;
+}
+.navbar button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #393939;
+  background: white;
+  border: none;
+  cursor: pointer;
+}
+.navbar button img {
+  width: 13px;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 20px 8%;
+  }
+  .navbar button {
+    gap: 8px;
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px 5%;
+  }
+  .navbar ul {
+    display: none;
+  }
+  .navbar button img {
+    width: 12px;
+  }
+} */
+
+:root {
+  --bg: rgba(8, 11, 40, 0.66);
+  --blur: 12px;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.78);
+  --accent: #8a4dff; /* adjust to match your purple */
+  --border: rgba(255, 255, 255, 0.14);
+  --radius: 12px;
+  --container: 1200px;
+}
+
+/* ===== Bar ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: saturate(140%) blur(var(--blur));
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar__inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ===== Brand ===== */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.brand__logo {
+  height: 36px;
+  width: auto;
+  border-radius: 8px;
+}
+.brand__name {
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* ===== Links ===== */
+.nav__links {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+.nav__link {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+}
+.nav__link:hover,
+.nav__link:focus {
+  color: var(--text);
+  outline: none;
+}
+
+/* Active route highlight (NavLink adds .active) */
+.nav__link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ===== Actions ===== */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.select select {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+.select option {
+  background-color: #0b0b2e;
+  color: #fff;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+}
+.btn img {
+  width: 13px;
+}
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(138, 77, 255, 0.3);
+}
+.btn--primary:hover {
+  transform: translateY(-1px);
+}
+
+/* ===== Hamburger & Drawer ===== */
+.hamburger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  border-radius: 10px;
+}
+.hamburger span {
+  display: block;
+  height: 2px;
+  margin: 6px 10px;
+  background: var(--text);
+}
+
+/* hidden by default */
+.drawer {
+  display: none;
+}
+.drawer.is-open {
+  display: block;
+  background: var(--bg);
+  backdrop-filter: blur(var(--blur));
+  border-top: 1px solid var(--border);
+}
+.drawer__link {
+  display: block;
+  padding: 14px 24px;
+  color: var(--text);
+  text-decoration: none;
+}
+.drawer__link + .drawer__link {
+  border-top: 1px solid var(--border);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 960px) {
+  .nav__links {
+    display: none;
+  }
+  .hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand__name {
+    font-size: 16px;
+  }
+  .navbar__inner {
+    padding: 12px 16px;
+  }
+}

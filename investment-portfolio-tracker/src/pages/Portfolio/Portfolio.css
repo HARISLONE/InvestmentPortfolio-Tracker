@@ -1,0 +1,67 @@
+.portfolio-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+
+.portfolio-title {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.portfolio-actions {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0 20px;
+}
+
+.btn-primary {
+  height: 42px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #8a4dff, #6c5ce7);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(138, 77, 255, 0.35);
+}
+
+.assets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.asset-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+}
+.asset-card__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.asset-card__name {
+  font-size: 18px;
+  font-weight: 700;
+}
+.asset-card__type {
+  opacity: 0.8;
+  font-size: 14px;
+}
+.asset-card__remove {
+  border: 0;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: rgba(255, 77, 77, 0.95);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}

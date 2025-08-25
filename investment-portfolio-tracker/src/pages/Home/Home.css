@@ -1,0 +1,324 @@
+/* .home{
+    padding: 0px 10px;
+    padding-bottom: 100px;
+}
+.hero{
+    max-width: 600px;
+    margin: 80px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+}
+.hero h1{
+    font-size: max(4vw,36px);
+}
+.hero p{
+    width: 75%;
+    color: #e3e3e3;
+    line-height: 1.5;
+}
+.hero form{
+    padding: 8px;
+    width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.hero input{
+    flex: 1;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+}
+.hero button{
+    border: none;
+    background: #7927ff;
+    color: white;
+    font-size: 16px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.crypto-table{
+    max-width: 800px;
+    margin: auto;
+    background: linear-gradient(rgba(84,3,255,0.15),rgba(105,2,153,0.15));
+    border-radius: 15px;
+}
+.table-layout{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1.5fr;
+    padding: 15px 20px;
+    align-items: center;
+    border-bottom: 1px solid #3c3c3c;
+}
+.market-cap{
+    text-align: right;
+}
+.table-layout:last-child{
+    border: none;
+}
+.table-layout div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.table-layout div img{
+    width: 35px;
+}
+.table-layout .green{
+    color: #00D515;
+    text-align: center;
+}
+.table-layout .red{
+    color: #ff4646;
+    text-align: center;
+}
+@media (max-width: 768px){
+    .table-layout{
+        grid-template-columns: 0.5fr 3fr 1fr 1fr;
+    }
+    .market-cap{
+        display: none;
+    }
+}
+@media (max-width: 500px){
+    .table-layout div img{
+        width: 25px;
+    }
+    .table-layout{
+        font-size: 13px;
+    }
+    .hero form input{
+        width: 100px;
+    }
+} */
+
+/* ===== Design tokens =====  */
+:root {
+  --container: 1100px;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --border: rgba(255, 255, 255, 0.12);
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel-strong: rgba(255, 255, 255, 0.08);
+  --text: #fff;
+  --muted: rgba(255, 255, 255, 0.78);
+  --hero-muted: rgba(255, 255, 255, 0.78);
+  --accent: #8a4dff; /* tune to your purple */
+  --accent-2: #b55cff; /* lighter accent for gradient */
+  --green: #00d48f;
+  --red: #ff5668;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== Page ===== */
+.home {
+  padding: 0 16px 100px;
+}
+
+/* ===== Hero ===== */
+.hero {
+  max-width: var(--container);
+  margin: 96px auto 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: 0.2px;
+  margin: 0;
+  font-weight: 800;
+  /* gradient title */
+  background: linear-gradient(180deg, #fff 0%, #eae6ff 60%, #cfc6ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  width: min(720px, 90%);
+  color: var(--hero-muted);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+/* Search bar */
+.hero form {
+  width: min(720px, 92%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.hero form:focus-within {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(138, 77, 255, 0.28);
+}
+
+.hero input {
+  flex: 1;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 12px 14px 12px 14px;
+  background: transparent;
+  color: #222;
+}
+.hero input::placeholder {
+  color: #8f8f8f;
+}
+
+.hero button {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 8px 20px rgba(138, 77, 255, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.hero button:hover {
+  transform: translateY(-1px);
+}
+.hero button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(138, 77, 255, 0.25);
+}
+
+/* ===== Table card ===== */
+.crypto-table {
+  max-width: var(--container);
+  margin: 40px auto 0;
+  background: linear-gradient(
+    180deg,
+    rgba(138, 77, 255, 0.12),
+    rgba(105, 2, 153, 0.1)
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden; /* keeps rounded corners with hover rows */
+  box-shadow: var(--shadow);
+}
+
+/* Header row (first grid) */
+.crypto-table .table-layout:first-child {
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+}
+
+/* Rows */
+.table-layout {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1.5fr;
+  padding: 16px 20px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s ease;
+}
+.table-layout:last-child {
+  border: none;
+}
+.table-layout:hover {
+  background: var(--panel-strong);
+}
+
+.table-layout div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0; /* prevent overflow in long names */
+}
+
+.table-layout div img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+}
+
+.table-layout .green {
+  color: var(--green);
+  text-align: center;
+  font-weight: 600;
+}
+.table-layout .red {
+  color: var(--red);
+  text-align: center;
+  font-weight: 600;
+}
+
+.market-cap {
+  text-align: right;
+  color: var(--muted);
+}
+
+/* Small metadata text (optional if you show symbols) */
+.coin-meta {
+  display: inline-flex;
+  gap: 8px;
+  opacity: 0.8;
+  font-size: 12px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .hero {
+    margin-top: 72px;
+  }
+  .table-layout {
+    grid-template-columns: 0.5fr 2.5fr 1fr 1fr;
+  }
+  .market-cap {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    gap: 18px;
+  }
+  .hero form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-layout {
+    font-size: 13px;
+    padding: 14px 14px;
+  }
+  .table-layout div img {
+    width: 26px;
+    height: 26px;
+  }
+  .hero button {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
